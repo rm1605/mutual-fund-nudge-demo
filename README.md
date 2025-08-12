@@ -1,70 +1,143 @@
-# Getting Started with Create React App
+# 🏦 Mutual Fund Diversification Nudge App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **React-based** interactive app that helps users build a **diversified mutual fund portfolio** by showing **real-time overlap metrics** and **nudging** them toward better diversification.  
+Built for the Indian mutual fund market with **popular fund data**, **overlap matrix**, and **behavioral finance nudges**.
 
-## Available Scripts
+![App Screenshot](docs/screenshot.png) <!-- Optional: Add screenshot later -->
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📌 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **📊 Fund Data**  
+  Contains 10+ popular Indian mutual funds with category, 3Y returns, AUM, expense ratio, and top holdings.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **🛡 Diversification Nudges**  
+  Alerts the user when the chosen fund has high overlap with existing portfolio holdings.
 
-### `npm test`
+- **✅ Simple Diversification Metric**  
+  Uses portfolio **overlap percentage** to calculate a **Diversification Score**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **📈 Expected Returns**  
+  Displays average historical 3-year returns for the selected portfolio.
 
-### `npm run build`
+- **🔄 Progressive Selection Flow**  
+  Pick 3 funds step-by-step with progress indicator.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **🚀 Export Portfolio**  
+  Download your portfolio details as a JSON file.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **📱 Responsive UI**  
+  Works on desktops, tablets, and mobiles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Frontend:** [React](https://reactjs.org/) (Create React App)
+- **Charts:** [Chart.js](https://www.chartjs.org/) (optional — can be disabled)
+- **Styling:** CSS3 (Responsive Grid & Flexbox)
+- **Deployment:** [Vercel](https://vercel.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📂 Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+mutual-fund-nudge-demo/
+│
+├── public/ # Static assets
+├── src/
+│ ├── App.js # Main React component & logic
+│ ├── App.css # Styling
+│ ├── index.js # Entry point
+│ ├── index.css # Global styles
+│ └── ...other files
+├── package.json # Dependencies & scripts
+└── README.md
 
-## Learn More
+text
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Getting Started
 
-### Code Splitting
+### 1️⃣ Clone the Repository
+git clone https://github.com/<your-username>/mutual-fund-nudge-demo.git
+cd mutual-fund-nudge-demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+text
 
-### Analyzing the Bundle Size
+### 2️⃣ Install Dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+text
 
-### Making a Progressive Web App
+### 3️⃣ Run Locally
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+text
+The app will be available at [**http://localhost:3000**](http://localhost:3000)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🌐 Deployment on Vercel
 
-### Deployment
+1. Push your project to GitHub.
+2. Go to [Vercel](https://vercel.com/) and click **"New Project"**.
+3. Import your GitHub repository.
+4. Vercel will auto-detect Create React App:
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `build`
+5. Click **Deploy**.
+6. Your app will be live at:  
+   `https://<your-project-name>.vercel.app`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📊 Diversification Metric
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Overlap % Formula**:  
+  For each pair of funds, overlap is pre-calculated from holdings:  
+  \[
+  \text{Overlap} = \sum_{i \in \text{common holdings}} \min(\text{weightA}_i, \text{weightB}_i)
+  \]
+
+- **Portfolio Diversification Score**:
+  \[
+  100 - (1.5 \times \text{average overlap \%})
+  \]
+  - **>85**: Excellent diversification  
+  - **50–85**: Moderate diversification  
+  - **<50**: Poor diversification  
+
+---
+
+## 📈 Expected Returns Calculation
+
+The **Expected Return** is calculated as:
+\[
+\frac{\text{Sum of 3Y returns of selected funds}}{\text{Number of funds}}
+\]
+This gives an **average historical performance** of the chosen portfolio.
+
+---
+
+## 💡 Future Enhancements
+
+- Live API integration for fund data.
+- Advanced analytics (risk-adjusted returns, sector exposure).
+- User authentication and saved portfolios.
+- Multi-language support for Indian investors.
+
+---
+
+## 👨‍💻 Author
+
+Developed for demonstration and academic purposes.  
+You’re free to fork and adapt for your own use. 👍
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
